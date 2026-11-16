@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FL Collision Group</title>
+<meta name="description" content="¿Tuviste un accidente en Miami, Hialeah o Doral? FL Collision Group te conecta con abogados y médicos con experiencia. Evaluación gratis. Hablamos español.">
+<meta property="og:title" content="FL Collision Group — Ayuda después de un accidente">
+<meta property="og:description" content="Te conectamos con abogados y médicos con experiencia. Evaluación GRATIS · Hablamos Español.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout: black stage, metallic-gold accents; bilingual pairs — Spanish leads, English follows in muted tone */
+  --bg:#0b0b0a; --panel:#151411; --line:#2b2820; --gold:#d4af37; --gold-2:#f0d27a; --ink:#f4f1ea; --muted:#a8a294;
+  --display:"Oswald","Arial Narrow",Arial,sans-serif; --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);text-transform:uppercase;letter-spacing:.01em;line-height:1.05;margin:0;text-wrap:balance}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.en{color:var(--muted);font-size:.92em}
+:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(11,11,10,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{height:44px;width:auto}
+.brand span{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.04em}
+nav{display:flex;gap:22px;align-items:center}
+nav a{text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink)}
+@media (max-width:760px){nav a.nl{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;padding:14px 22px;border-radius:6px;border:2px solid var(--gold);min-height:52px;cursor:pointer}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.solid{background:var(--gold);color:#111}
+.btn.solid:hover{background:var(--gold-2);border-color:var(--gold-2)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(212,175,55,.1)}
+.btn.sm{font-size:15px;padding:8px 14px;min-height:40px}
+
+/* hero */
+.hero{padding:56px 0 64px;background:radial-gradient(ellipse 70% 60% at 70% 30%,rgba(212,175,55,.14),transparent 70%)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.eyebrow{font-family:var(--display);color:var(--gold);letter-spacing:.14em;font-size:14px;text-transform:uppercase}
+.hero h1{font-size:clamp(44px,7vw,82px);color:var(--gold);margin:12px 0 4px}
+.hero h1 + .en{font-family:var(--display);text-transform:uppercase;font-size:clamp(22px,3vw,32px);letter-spacing:.02em}
+.lead{font-size:20px;margin:20px 0 4px;max-width:34ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 26px}
+.chip{border:1px solid var(--gold);color:var(--gold-2);border-radius:999px;padding:5px 14px;font-weight:600;font-size:15px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero-logo{border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero{padding-top:32px}}
+@media (max-width:520px){.brand span{font-size:16px;white-space:nowrap}.brand img{height:36px}}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+.sec-head{margin-bottom:32px}
+.sec-head h2{font-size:clamp(32px,4.4vw,48px)}
+.sec-head h2 .g{color:var(--gold)}
+.sec-head p{margin:8px 0 0;max-width:60ch}
+
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px;padding:22px}
+.svc svg{width:34px;height:34px;color:var(--gold)}
+.svc h3{font-size:22px;margin:14px 0 2px}
+.svc .en{font-family:var(--display);text-transform:uppercase;letter-spacing:.02em}
+@media (max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:460px){.services{grid-template-columns:1fr}}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+.step{padding:24px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.num{width:44px;height:44px;border-radius:50%;background:var(--gold);color:#111;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:22px}
+.step h3{font-size:22px;margin:16px 0 2px}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+.gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.gallery figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.gallery img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
+.gallery figcaption{padding:10px 12px;font-size:14px;color:var(--muted)}
+.gallery figcaption b{color:var(--gold-2);font-family:var(--display);font-weight:600;letter-spacing:.03em;font-size:16px;display:block}
+.disc{margin:18px 0 0;font-size:14px;color:var(--muted);max-width:80ch}
+@media (max-width:980px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:600px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;list-style:none;padding:0;margin:0;counter-reset:c}
+.check li{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px;counter-increment:c}
+.check li::before{content:counter(c);font-family:var(--display);font-size:34px;color:var(--gold);display:block;line-height:1;margin-bottom:8px}
+.check b{display:block;font-size:18px}
+@media (max-width:980px){.check{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:460px){.check{grid-template-columns:1fr}}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+form{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px;display:grid;gap:14px}
+label{font-weight:600;font-size:15px;display:grid;gap:6px}
+input,select,textarea{font:inherit;color:var(--ink);background:#0e0d0b;border:1px solid var(--line);border-radius:6px;padding:12px}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);outline:none}
+textarea{min-height:96px;resize:vertical}
+.note{font-size:14px;color:var(--muted);margin:0}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding:48px 0 110px;text-align:center}
+footer img{max-width:360px;margin:0 auto 20px}
+footer p{color:var(--muted);font-size:14px;margin:6px auto;max-width:80ch}
+
+/* mobile sticky bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(11,11,10,.96);border-top:1px solid var(--line)}
+.bar .btn{flex:1}
+@media (max-width:760px){.bar{display:flex}}
+@media (min-width:761px){footer{padding-bottom:48px}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.46-.72-1.69-.8s-.39-.12-.55.12-.63.8-.78.96-.29.18-.53.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33a.45.45 0 0 0-.02-.42c-.06-.12-.55-1.33-.76-1.82s-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.74 2.74 0 0 0-.86 2.04 4.76 4.76 0 0 0 1 2.53 10.9 10.9 0 0 0 4.17 3.69c1.55.67 2.16.73 2.94.61a2.5 2.5 0 0 0 1.65-1.16 2 2 0 0 0 .14-1.16c-.06-.1-.22-.16-.47-.28z"/></symbol>
+  <symbol id="i-sms" viewBox="0 0 24 24"><path fill="currentColor" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 9h10v2H7zm6 5H7v-2h6zm4-6H7V6h10z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path fill="currentColor" d="M18.9 6a1.5 1.5 0 0 0-1.4-1h-11a1.5 1.5 0 0 0-1.4 1L3 12v8a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-8zM6.5 16A1.5 1.5 0 1 1 8 14.5 1.5 1.5 0 0 1 6.5 16zm11 0a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5zM5 11l1.5-4.5h11L19 11z"/></symbol>
+  <symbol id="i-fall" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 1 21h22zm1 15h-2v-2h2zm0-4h-2V9h2z"/></symbol>
+  <symbol id="i-hard" viewBox="0 0 24 24"><path fill="currentColor" d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2H2zm10-14a8 8 0 0 0-8 8v2h16v-2a8 8 0 0 0-5-7.4V7h-2V4.07A8.6 8.6 0 0 0 12 4zm-1 .1V7H9V4.6a8 8 0 0 1 2-.5z"/></symbol>
+  <symbol id="i-taxi" viewBox="0 0 24 24"><path fill="currentColor" d="M9 2h6v3h2.5a1.5 1.5 0 0 1 1.4 1L21 12v8a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-8l2.1-6a1.5 1.5 0 0 1 1.4-1H9zM6.5 16A1.5 1.5 0 1 0 5 14.5 1.5 1.5 0 0 0 6.5 16zm11 0a1.5 1.5 0 1 0-1.5-1.5 1.5 1.5 0 0 0 1.5 1.5zM5 11h14l-1.5-4h-11z"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap hdr">
+    <a class="brand" href="#top" aria-label="FL Collision Group, inicio"><img src="img/emblem.png" alt="" width="52" height="44"><span>FL COLLISION GROUP</span></a>
+    <nav>
+      <a class="nl" href="#servicios">Servicios</a>
+      <a class="nl" href="#clientes">Clientes</a>
+      <a class="nl" href="#contacto">Contacto</a>
+      <a class="btn solid sm" href="tel:+13059944473"><svg><use href="#i-phone"/></svg>Llamar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Miami · Hialeah · Doral · Miami Lakes</div>
+        <h1>¿Tuviste un accidente?</h1>
+        <div class="en">Been in an accident?</div>
+        <p class="lead">No tienes que luchar solo. Te conectamos con abogados y médicos con experiencia.</p>
+        <p class="en">You don't have to fight alone. We connect you with experienced attorneys and doctors.</p>
+        <div class="chips"><span class="chip">Evaluación GRATIS · Free evaluation</span><span class="chip">Hablamos Español</span><span class="chip">24/7</span></div>
+        <div class="ctas">
+          <a class="btn solid" href="tel:+13059944473"><svg><use href="#i-phone"/></svg>Llamar / Call</a>
+          <a class="btn ghost" href="https://wa.me/13059944473?text=Hola%2C%20tuve%20un%20accidente%20y%20necesito%20ayuda." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="btn ghost" href="sms:+13059944473"><svg><use href="#i-sms"/></svg>Texto / Text</a>
+        </div>
+      </div>
+      <div class="hero-logo"><img src="img/logo-full.jpg" alt="FL Collision Group — Accident &amp; Injury Claims" width="1100" height="608"></div>
+    </div>
+  </div>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-head"><h2>Cómo te <span class="g">ayudamos</span></h2><p class="en">How we help</p></div>
+      <div class="services">
+        <div class="svc"><svg><use href="#i-car"/></svg><h3>Accidentes de auto</h3><div class="en">Car accidents</div></div>
+        <div class="svc"><svg><use href="#i-fall"/></svg><h3>Resbalones y caídas</h3><div class="en">Slip &amp; fall</div></div>
+        <div class="svc"><svg><use href="#i-hard"/></svg><h3>Compensación laboral</h3><div class="en">Workers' comp</div></div>
+        <div class="svc"><svg><use href="#i-taxi"/></svg><h3>Accidentes de Uber y Lyft</h3><div class="en">Rideshare accidents</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <div class="sec-head"><h2>¿Cómo <span class="g">funciona?</span></h2><p class="en">How it works</p></div>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h3>Llámanos o escríbenos</h3><div class="en">Call, text or WhatsApp us — any time.</div></div>
+        <div class="step"><div class="num">2</div><h3>Evaluación gratis</h3><div class="en">We review what happened at no cost to you.</div></div>
+        <div class="step"><div class="num">3</div><h3>Te conectamos</h3><div class="en">We connect you with an attorney and a doctor.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="clientes">
+    <div class="wrap">
+      <div class="sec-head"><h2>Clientes <span class="g">atendidos</span></h2><p class="en">Clients we've helped</p></div>
+      <div class="gallery">
+        <figure><img src="img/r100k.jpg" alt="Cliente con cheque de FL Collision Group, 2024" loading="lazy" width="900" height="1029"><figcaption><b>Lesión personal</b>2024</figcaption></figure>
+        <figure><img src="img/r50k.jpg" alt="Cliente con cheque de FL Collision Group, diciembre 2024" loading="lazy" width="900" height="1199"><figcaption><b>Reclamo por lesión</b>2024</figcaption></figure>
+        <figure><img src="img/r25k-26.jpg" alt="Cliente con cheque de FL Collision Group, 2026" loading="lazy" width="900" height="1200"><figcaption><b>Lesión personal</b>2026</figcaption></figure>
+        <figure><img src="img/r20k.jpg" alt="Clientas con cheque de FL Collision Group, 2025" loading="lazy" width="900" height="1010"><figcaption><b>Lesión personal</b>2025</figcaption></figure>
+        <figure><img src="img/r25k-22.jpg" alt="Clienta con cheque de FL Collision Group, 2022" loading="lazy" width="900" height="1140"><figcaption><b>Reclamo por lesión</b>2022</figcaption></figure>
+      </div>
+      <p class="disc">Resultados anteriores no garantizan resultados futuros. Cada caso es diferente. · Past results do not guarantee future outcomes. Every case is different.</p>
+    </div>
+  </section>
+
+  <section id="despues">
+    <div class="wrap">
+      <div class="sec-head"><h2>Después de un <span class="g">choque</span></h2><p class="en">What to do after a crash</p></div>
+      <ol class="check">
+        <li><b>Llama al 911</b><span class="en">Call 911 and get a police report.</span></li>
+        <li><b>Toma fotos</b><span class="en">Photos of cars, the scene and injuries.</span></li>
+        <li><b>Busca atención médica</b><span class="en">See a doctor promptly, even if you feel fine.</span></li>
+        <li><b>No des declaraciones</b><span class="en">Don't give statements to the other driver's insurance.</span></li>
+        <li><b>Llámanos</b><span class="en">Call us for a free evaluation.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap contact">
+      <div class="sec-head">
+        <h2>Habla con <span class="g">nosotros</span></h2>
+        <p class="en">Talk to us</p>
+        <p>Llena el formulario y te abrimos WhatsApp con tu mensaje listo para enviar. O llámanos directamente.</p>
+        <p class="en">Fill out the form and we'll open WhatsApp with your message ready to send. Or call us directly.</p>
+        <div class="ctas" style="margin-top:20px">
+          <a class="btn solid" href="tel:+13059944473"><svg><use href="#i-phone"/></svg>Llamar / Call</a>
+          <a class="btn ghost" href="sms:+13059944473"><svg><use href="#i-sms"/></svg>Texto / Text</a>
+        </div>
+      </div>
+      <form id="f">
+        <label for="name">Nombre / Name<input id="name" name="name" required autocomplete="name"></label>
+        <label for="phone">Teléfono / Phone<input id="phone" name="phone" type="tel" required autocomplete="tel"></label>
+        <label for="type">Tipo de accidente / Type of accident
+          <select id="type" name="type">
+            <option>Accidente de auto / Car accident</option>
+            <option>Resbalón y caída / Slip &amp; fall</option>
+            <option>Compensación laboral / Workers' comp</option>
+            <option>Uber / Lyft</option>
+            <option>Otro / Other</option>
+          </select>
+        </label>
+        <label for="msg">Mensaje / Message<textarea id="msg" name="msg" placeholder="¿Qué pasó? / What happened?"></textarea></label>
+        <button class="btn solid" type="submit"><svg><use href="#i-wa"/></svg>Enviar por WhatsApp</button>
+        <p class="note">Al enviar, se abre WhatsApp con tu mensaje. · Submitting opens WhatsApp with your message.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo-full.jpg" alt="FL Collision Group" width="1100" height="608" loading="lazy">
+    <p>FL Collision Group no es un bufete de abogados y no ofrece asesoría legal; somos un servicio de referidos que te conecta con abogados y médicos independientes.</p>
+    <p>FL Collision Group is not a law firm and does not provide legal advice; we are a referral service that connects you with independent attorneys and doctors.</p>
+    <p>Resultados anteriores no garantizan resultados futuros. · Past results do not guarantee future outcomes.</p>
+    <p>Miami · Hialeah · Doral · Miami Lakes, FL · © 2026 FL Collision Group</p>
+  </div>
+</footer>
+
+<div class="bar">
+  <a class="btn solid" href="tel:+13059944473"><svg><use href="#i-phone"/></svg>Llamar</a>
+  <a class="btn ghost" href="https://wa.me/13059944473" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+</div>
+
+<script>
+document.getElementById('f').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var v = function (id) { return document.getElementById(id).value.trim(); };
+  var text = 'Hola FL Collision Group, necesito ayuda.\n' +
+    'Nombre: ' + v('name') + '\nTeléfono: ' + v('phone') + '\nTipo: ' + v('type') +
+    (v('msg') ? '\nMensaje: ' + v('msg') : '');
+  window.location.href = 'https://wa.me/13059944473?text=' + encodeURIComponent(text);
+});
+</script>
+</body>
+</html>
